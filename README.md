@@ -55,7 +55,7 @@ $ npm run dev
 ## Text
 
 Text tab uses the model text-davinci-003.
-It means that we can fine-tune this model but we cannot use it as a chat..
+It means that we can fine-tune this model but we cannot use it as a chat.
 
 ## Chat
 
