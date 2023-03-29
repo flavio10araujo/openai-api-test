@@ -16,6 +16,10 @@ The model gpt-3.5-turbo is much cheaper and advanced, but it is not available fo
 
 The model dall-e-2 is the one used for generating images.
 
+The idea of this project was to create an internal chat that could be used in a company with knowledge that the normal ChatGPT is not able to kwnow (like internal processes, info about internal projects, etc). The chat would act as an employee that knows everthing about the company (all the processes, projects and technologies) and it would talk only about the company.
+
+For that it is necessary to use a model that we can fine-tune.
+
 ### How to run the project
 
 1. If you don’t have Node.js installed, install it from here (Node.js version >= 14.6.0 required)
