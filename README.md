@@ -49,3 +49,26 @@ $ copy .env.example .env
 7. Run the app
 
 $ npm run dev
+
+### Tabs
+
+## Text
+
+Text tab uses the model text-davinci-003.
+It means that we can fine-tune this model but we cannot use it as a chat..
+
+## Chat
+
+Chat tab uses the model gpt-3.5-turbo.
+It means that we cannot fine-tune this model but we can use it as a chat.
+
+<img width="1417" alt="image" src="https://user-images.githubusercontent.com/6059213/228580579-d4b328ca-d301-4143-9dfd-81bf4eacbdd0.png">
+
+## Image
+
+Image tab uses the model dall-e-2.
+it means that it is capable of generating images according to the prompt inserted.
+
+<img width="1413" alt="image" src="https://user-images.githubusercontent.com/6059213/228580835-125ff31b-691d-475c-b0ef-43b69fa125e9.png">
+
+
