@@ -3,6 +3,7 @@ import { Configuration, OpenAIApi } from "openai";
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
 });
+
 const openai = new OpenAIApi(configuration);
 
 export default async function (req, res) {
@@ -16,7 +17,7 @@ export default async function (req, res) {
     return;
   }
 
-  const image = req.body.image || "";
+  const image = req.body.prompt || "";
   if (image.trim().length === 0) {
     res.status(400).json({
       error: {

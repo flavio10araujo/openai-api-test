@@ -1,15 +1,29 @@
 import Head from "next/head";
 import { useState } from "react";
+import ChatHistory from "../../../components/chat/ChatHistory";
+import NewMessage from "../../../components/chat/NewMessage";
 import styles from "./index.module.css";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
-  const [imageInput, setImageInput] = useState("");
+  const [chats, setChats] = useState([]);
   const [result, setResult] = useState();
 
-  async function onSubmit(event) {
+  const updateChats = (role, newMessage) => {
+    setChats((prevChats) => {
+      return [
+        ...prevChats,
+        {
+          id: prevChats.length + 1,
+          role: role,
+          content: newMessage,
+        },
+      ];
+    });
+  };
+
+  const addMessageHandler = async (newMessage) => {
     setIsLoading(true);
-    event.preventDefault();
 
     try {
       const response = await fetch("/api/completion/image/generate", {
@@ -17,10 +31,13 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ image: imageInput }),
+        body: JSON.stringify({ prompt: newMessage.content }),
       });
 
+      updateChats("user", newMessage.content);
+
       const data = await response.json();
+
       if (response.status !== 200) {
         throw (
           data.error ||
@@ -29,14 +46,14 @@ export default function Home() {
       }
 
       setResult(data.result);
-      setImageInput("");
+
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
       console.error(error);
       alert(error.message);
     }
-  }
+  };
 
   return (
     <div>
@@ -45,31 +62,15 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <form onSubmit={onSubmit}>
-          <input
-            type="text"
-            name="image"
-            value={imageInput}
-            onChange={(e) => setImageInput(e.target.value)}
-          />
+        {result && (
+          <div className={styles.result}>
+            <img src={result} />
+          </div>
+        )}
 
-          {isLoading && (
-            <div align="center">
-              <div className={styles.loader}></div>
-            </div>
-          )}
+        <ChatHistory items={chats} />
 
-          <input
-            type="submit"
-            value="Create image"
-            disabled={isLoading}
-            readOnly={isLoading}
-            className={isLoading ? styles.buttonDisabled : ""}
-          />
-        </form>
-        <div className={styles.result}>
-          <img src={result} />
-        </div>
+        <NewMessage onAddMessage={addMessageHandler} isLoading={isLoading} />
       </main>
     </div>
   );
