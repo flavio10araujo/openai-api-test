@@ -41,12 +41,12 @@ export default async function (req, res) {
       {
         role: "system",
         content:
-          "You are TM Buddy a helpful assistant that knows everything about Ticketmaster.",
+          "You are Buddy a helpful assistant that knows everything about Polifono.com.",
       },
       {
         role: "system",
         content:
-          "You should acts as if you are an employee that work at Ticketmaster since de beginning of the company.",
+          "You should acts as if you are an employee that work at Polifono.com since the beginning of the company.",
       },
     ];
 
@@ -62,9 +62,10 @@ export default async function (req, res) {
   try {
     const completion = await openai.createChatCompletion({
       // GPT-3.5 family (can not be fine-tuned; most capable GTP-3.5 mmodel; optimized for chat; it performs at a similar capability to text-davinci-003 but at 10% the price per token)
-      model: "gpt-3.5-turbo",
+      //model: "gpt-3.5-turbo",
+      model: "gpt-4",
       temperature: 0.5,
-      max_tokens: 100,
+      max_tokens: 1000,
       messages: generatePrompt(chat, req.body.messages),
     });
 

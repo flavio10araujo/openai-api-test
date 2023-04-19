@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChatHistory from "../../../components/chat/ChatHistory";
 import NewMessage from "../../../components/chat/NewMessage";
 import styles from "./index.module.css";

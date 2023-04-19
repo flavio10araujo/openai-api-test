@@ -10,7 +10,7 @@ const MessageItem = (props) => {
         <div className={styles.messageItemDescription}>
           <div>
             <div className={styles.messageItemContent}>
-              {props.role === "user" ? "You" : "TM Buddy"}: {props.content}
+              {props.role === "user" ? "You" : "Buddy"}: {props.content}
             </div>
           </div>
         </div>

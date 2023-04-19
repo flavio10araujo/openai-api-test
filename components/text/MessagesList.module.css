@@ -1,9 +1,0 @@
-.messagesList {
-    list-style: none;
-    padding: 0;
-}
-
-.messagesListFallback {
-    color: white;
-    text-align: center;
-}
