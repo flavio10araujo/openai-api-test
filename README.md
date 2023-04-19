@@ -8,17 +8,16 @@ Technologies:
 * React
 * NextJS
 
-It's a simple example of how to connect to the OpenAI API to call its models, like text-davinci-003, gpt-3.5-turbo and dall-e-2.
+It's a simple example of how to connect to the OpenAI API to call its models:
 
-At the moment (03/2023), text-davinci-003 is the only one available for fine-tuning.
+* text-davinci-003 (in the Text module)
+* gpt-3.5-turbo or gpt-4 (in the Chat module)
+* openai.createImage (in the Image module)
+* whisper-1 (in the Audio module)
+
+At the moment (03/2023), text-davinci-003 is the only model available for fine-tuning.
 
 The model gpt-3.5-turbo is much cheaper and advanced, but it is not available for fine-tuning yet.
-
-The model dall-e-2 is the one used for generating images.
-
-The idea of this project was to create an internal chat that could be used in a company with knowledge that the normal ChatGPT is not able to know (like internal processes, info about internal projects, etc). The chat would act as an employee that knows everthing about the company (all the processes, projects and technologies) and it would talk only about the company.
-
-For that it is necessary to use a model that we can fine-tune.
 
 ### How to run the project
 
@@ -50,25 +49,30 @@ $ copy .env.example .env
 
 $ npm run dev
 
-### Tabs
+### Modules
 
 ## Text
 
-Text tab uses the model text-davinci-003.
+Text module uses the model text-davinci-003.
 It means that we can fine-tune this model but we cannot use it as a chat.
 
 ## Chat
 
-Chat tab uses the model gpt-3.5-turbo.
+Chat module uses the model gpt-3.5-turbo or gpt-4 (you can change it in the code).
 It means that we cannot fine-tune this model but we can use it as a chat.
 
-<img width="1417" alt="image" src="https://user-images.githubusercontent.com/6059213/228580579-d4b328ca-d301-4143-9dfd-81bf4eacbdd0.png">
+<img width="1425" alt="image" src="https://user-images.githubusercontent.com/6059213/232937597-0f1c5ff7-80d6-4f0b-85a6-4988792be357.png">
 
 ## Image
 
-Image tab uses the model dall-e-2.
-it means that it is capable of generating images according to the prompt inserted.
+Image module calls openai.createImage (the model dall-e-2).
+It means that it is capable of generating images according to the prompt inserted.
 
-<img width="1413" alt="image" src="https://user-images.githubusercontent.com/6059213/228580835-125ff31b-691d-475c-b0ef-43b69fa125e9.png">
+<img width="1553" alt="image" src="https://user-images.githubusercontent.com/6059213/232940187-f30d0fc1-a324-4a9e-9b46-1cc1718e3288.png">
+
+## Audio
+
+Audio module uses whisper-1 model.
+You can use to make a translation or a transcription of an audio.
 
 
